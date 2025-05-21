@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Proyecto STEAM: Tecno-Innovadores Comunitarios</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+	background-color: #000000; /* Azul Educate (placeholder) */
+	color: #000000;
+	padding-top: 7px;
+	padding-right: 7px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	text-align: center;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+        }
+        .logo-placeholder {
+            width: 150px; 
+            height: auto;
+            margin-bottom:10px;
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='50' viewBox='0 0 150 50'%3E%3Crect width='150' height='50' fill='%23ddd'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23333'%3ELOGO xxxxx%3C/text%3E%3C/svg%3E");
+        }
+
+        .tabs {
+            display: flex;
+            background-color: #e9e9e9;
+            border-bottom: 2px solid #005A9C; /* Azul Educate */
+            width: auto;
+        }
+        .tab-button {
+            flex: 1;
+            padding: 5px 7px;
+            cursor: pointer;
+            border: none;
+            background-color: #e9e9e9;
+            font-size: 0.5em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tab-button:hover {
+            background-color: #d1d1d1;
+        }
+        .tab-button.active {
+            background-color: #005A9C; /* Azul Educate */
+            color: white;
+            border-bottom: 2px solid #004070; /* Azul más oscuro */
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            color: #005A9C; /* Azul Educate */
+            border-bottom: 2px solid #007BFF; /* Azul más claro para subtítulos */
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            color: #007BFF; /* Azul más claro */
+            margin-top: 20px;
+        }
+
+        .steam-areas {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        .steam-area {
+            margin: 10px;
+            padding:10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100px; /* Ajustar según necesidad */
+        }
+        .steam-area .icon {
+            font-size: 2em; 
+            margin-bottom: 5px;
+            width: 80px; height: 40px; background-color: #ccc; border-radius: 50%; margin: 0 auto 5px auto;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .fase-proyecto {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-left: 5px solid #007BFF; 
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .fase-proyecto h3 {
+            margin-top: 0;
+            color: #005A9C;
+        }
+        .fase-proyecto .activity-title {
+            font-weight: bold;
+            color: #333;
+            margin-top:15px;
+        }
+        .fase-proyecto .img-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 150px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #777;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .fase-proyecto ul {
+            padding-left: 20px;
+        }
+
+        .rubrica table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em; /* Ajustar para más texto */
+        }
+        .rubrica th, .rubrica td {
+            border: 1px solid #ddd;
+            padding: 8px; /* Reducir padding para más texto */
+            text-align: left;
+            vertical-align: top; /* Alinear texto arriba */
+        }
+        .rubrica th {
+            background-color: #005A9C; 
+            color: white;
+        }
+        .rubrica td:first-child {
+            font-weight: bold;
+            background-color: #f0f0f0;
+            width: 20%; /* Ancho para la columna de criterios */
+        }
+        .rubrica .nivel-bajo { background-color: #ffebee; } 
+        .rubrica .nivel-basico { background-color: #fff9c4; } 
+        .rubrica .nivel-alto { background-color: #e8f5e9; } 
+        .rubrica .nivel-superior { background-color: #d1f2eb; } 
+
+        .resource-list li, .evaluation-list li, .product-list li {
+            margin-bottom: 8px;
+        }
+        .icon-placeholder {
+             display: inline-block; width: 20px; height: 20px; background-color: #ccc; border-radius: 3px; margin-right: 8px; vertical-align: middle;
+        }
+        .designer-note {
+            background-color: #fff0b3;
+            border: 1px dashed #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            font-style: italic;
+            font-size: 0.9em;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+			
+             
+			<p>  </p>
+			<center><img src="./TECNOIN-BANNER2.jpg" style="width: 100%; height: 100%;"  ></center>
+			
+        </header>
+
+            <div class="tabs" style="width: 100%;">
+                <button class="tab-button active" onclick="openTab(event, 'General')">Info General</button>
+                <button class="tab-button" onclick="openTab(event, 'Objetivos')">Objetivos</button>
+                <button class="tab-button" onclick="openTab(event, 'FasesActividades')">Fases y Actividades</button>
+                <button class="tab-button" onclick="openTab(event, 'Evaluacion')">Evaluación y Recursos</button>
+                <button class="tab-button" onclick="openTab(event, 'Rubrica')">Rúbrica</button>
+            </div>
+
+        <div id="General" class="tab-content active">
+            <!-- Contenido de Info General (igual que antes) -->
+            <h2>Información General del Proyecto</h2>
+            
+
+            <p><strong>Ciclo Educativo:</strong> V</p>
+            <p><strong>Grado(s):</strong> 10° y 11°</p>
+            
+
+            <h3>Áreas STEAM Integradas</h3>
+             <center><img src="STEAM-01.jpg" width="100%"  ></center>
+            
+            <h3>Idea Central del Proyecto</h3>
+             
+  
+             <center><img src="./TEXTO-TECNOLOGIAINNOADORAS-01.jpg" width="100%"  ></center>
+            <p>Desarrollar soluciones tecnológicas innovadoras, funcionales y con impacto positivo para un desafío o necesidad específica identificada por los estudiantes dentro de su comunidad (escolar, local, barrial).</p>
+
+            <h3>Problema o Desafío del Contexto a Abordar</h3>
+             <center>                            
+						<img src="IMC-01.png" width="100%">
+                           </center>
+            <p>Los estudiantes, mediante un proceso de indagación inicial, identificarán y delimitarán un problema o necesidad real y relevante en su comunidad...</p>
+            <ul>
+                <li>Optimización de recursos (agua, energía) en la institución o el hogar.</li>
+                <li>Mejora de la comunicación o información dentro de la comunidad escolar.</li>
+                <li>Soluciones para la gestión de residuos o fomento del reciclaje.</li>
+                <li>Herramientas de apoyo para el aprendizaje o la organización estudiantil.</li>
+                <li>Sistemas de alerta temprana o seguridad básica.</li>
+                <li>Fomento de la cultura local o el turismo sostenible a través de la tecnología.</li>
+                <li>Accesibilidad para personas con movilidad reducida en espacios comunes.</li>
+            </ul>
+        </div>
+
+        <div id="Objetivos" class="tab-content">
+            <!-- Contenido de Objetivos (igual que antes) -->
+             <h2>Objetivos del Proyecto</h2>
+                        <h3>Objetivo General</h3>
+            <p>Diseñar y desarrollar un prototipo de solución tecnológica innovadora que responda a un desafío comunitario identificado, aplicando el proceso de indagación científica y el razonamiento argumentativo matemático, fomentando el pensamiento crítico, la creatividad, la colaboración y la comunicación efectiva, para que los estudiantes se reconozcan como agentes de cambio positivo en su entorno.</p>
+
+            <h3>Objetivos Específicos de Aprendizaje</h3>
+            <p><strong>OE1 (Ciencia - Indagación):</strong> Aplicar el proceso de indagación científica para investigar y comprender a fondo un desafío comunitario, formulando preguntas, planteando hipótesis, recolectando y analizando información relevante, y derivando conclusiones que fundamenten el diseño de una solución tecnológica.</p>
+            <ul><li><strong>EBC Ciencias Naturales:</strong> "...me aproximo al conocimiento como científico(a) social": Observo y formulo preguntas específicas sobre aplicaciones de teorías científicas; Formulo hipótesis con base en el conocimiento cotidiano, teorías y modelos científicos; Identifico variables que influyen en los resultados de un experimento; Propongo modelos para predecir los resultados de mis experimentos y simulaciones; Registro mis observaciones y resultados utilizando esquemas, gráficos y tablas; Comunico el proceso de indagación y los resultados, utilizando gráficas, tablas, ecuaciones aritméticas y algebraicas. "Ciencia, tecnología y sociedad": Analizo el desarrollo de los componentes de [...] y su impacto en la vida diaria; Evalúo los problemas que afectan directamente a mi comunidad, como consecuencia del desarrollo, implementación o retiro de bienes y servicios tecnológicos e informáticos.</li><li><strong>Competencia de Indagación (Según lo proporcionado):</strong> Comprende que a partir de la investigación científica se construyen explicaciones sobre el mundo natural; Deriva conclusiones para algunos fenómenos de la naturaleza, basándose en conocimientos científicos y en la evidencia de su propia investigación y la de otros; Observa y relaciona patrones en los datos para evaluar las predicciones; Utiliza algunas habilidades de pensamiento y de procedimiento para evaluar predicciones.</li><li><strong>Habilidad S.XXI:</strong> Pensamiento Crítico, Alfabetización de Datos.</li></ul>
+           
+            <p><strong>OE2 (Tecnología e Ingeniería):</strong> Diseñar, construir y probar un prototipo funcional de una solución tecnológica (software, hardware o una combinación) que responda a las especificaciones y restricciones del desafío comunitario identificado, utilizando herramientas y metodologías apropiadas.</p>
+            <ul><li><strong>EBC Tecnología e Informática:</strong> "Naturaleza y Evolución de la Tecnología y la Informática": Genero propuestas innovadoras para el uso y aprovechamiento de los recursos tecnológicos; Planifico y diseño prototipos que representen realidades tecnológicas e informáticas posibles y futuras... "Solución de problemas con Tecnología e Informática": Propongo innovaciones tecnológicas e informáticas para la solución de problemas dando cumplimiento a restricciones y especificaciones técnicas y contextuales; Identifico condiciones, especificaciones y restricciones de diseño...; Diseño, construyo y pruebo prototipos de artefactos, sistemas o procesos como respuesta a una necesidad o problema...</li><li><strong>Habilidad S.XXI:</strong> Creatividad, Resolución de Problemas, Pensamiento Computacional.</li></ul>
+                       
+            <p><strong>OE3 (Matemáticas - Argumentación):</strong> Utilizar el razonamiento matemático y la argumentación para justificar las decisiones de diseño, la elección de algoritmos o modelos, la interpretación de datos y la validación de la efectividad y pertinencia de la solución tecnológica propuesta.</p>
+             <ul><li><strong>EBC Matemáticas:</strong> "Pensamiento Variacional y Sistemas Algebraicos y Analíticos": Modelo situaciones de variación...; Analizo las relaciones y propiedades entre las expresiones algebraicas y las gráficas... "Pensamiento Aleatorio y Sistemas de Datos": Interpreto y comparo resultados de estudios con información estadística...; Justifico o refuto inferencias basadas en razonamientos estadísticos... "Pensamiento Métrico y Sistemas de Medidas": Diseño estrategias para abordar situaciones de medición...</li><li><strong>Competencia de Argumentación (Según lo proporcionado):</strong> Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas; Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución de un problema; Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos; Establece la validez o pertinencia de una solución propuesta a un problema dado.</li><li><strong>Habilidad S.XXI:</strong> Pensamiento Crítico, Comunicación.</li></ul>
+           
+            <p><strong>OE4 (Colaboración y Comunicación - Arte):</strong> Trabajar colaborativamente en equipos para desarrollar el proyecto, comunicando de manera efectiva ideas, avances y resultados a través de diversos medios (incluyendo presentaciones visuales y demostraciones), y diseñar interfaces y materiales de comunicación atractivos y comprensibles.</p>
+            <ul><li><strong>EBC Transversales (Lenguaje, implícito en la comunicación):</strong> Produzco textos argumentativos que evidencian mi conocimiento de la lengua y el control sobre el uso que hago de ella en contextos comunicativos orales y escritos.</li><li><strong>EBC Tecnología e Informática (Grados 10-11):</strong> "Tecnología, Informática y Sociedad": Participo en deliberaciones argumentadas relacionadas con las aplicaciones e innovaciones tecnológicas...</li><li><strong>Habilidad S.XXI:</strong> Colaboración, Comunicación, Creatividad.</li></ul>
+                    </div>
+
+        <div id="FasesActividades" class="tab-content">
+            <!-- Contenido de Fases y Actividades (igual que antes, con todos los detalles) -->
+            <h2>Fases del Proyecto (ABP)</h2>
+                        <ol>
+                <li>Fase 1: Despertar la Curiosidad - ¡Conectando con Nuestra Comunidad!</li>
+                <li>Fase 2: Detectives Comunitarios - ¡Encontrando Nuestro Desafío!</li>
+                <li>Fase 3: Mentes en Acción - ¡Ideando la Tecno-Solución!</li>
+                <li>Fase 4: Manos a la Obra - ¡Construyendo Nuestro Prototipo!</li>
+                <li>Fase 5: A Prueba de Fuego - ¡Mejorando y Justificando!</li>
+                <li>Fase 6: ¡Mostrando Nuestro Ingenio! - Compartiendo con la Comunidad</li>
+                <li>Fase 7: Mirando Hacia Atrás y Hacia Adelante - ¡Nuestro Viaje de Aprendizaje!</li>
+            </ol>
+
+            <h2>Actividades Detalladas por Fase</h2>
+           
+            <div class="fase-proyecto">
+                <h3>Fase 1: Despertar la Curiosidad - ¡Conectando con Nuestra Comunidad!</h3>
+                                <p class="activity-title">Actividad 1.1: Lanzamiento Inspirador - "Tecnología con Propósito"</p>
+                <p><strong>¿Qué vamos a hacer?</strong></p>
+                <ol><li>Participaremos en una charla introductoria donde veremos ejemplos impactantes de cómo jóvenes como nosotros han usado la tecnología para resolver problemas en sus comunidades alrededor del mundo.</li><li>Discutiremos en pequeños grupos: ¿Qué problemas vemos a diario en nuestra escuela o barrio? ¿Cómo podría la tecnología ayudar?</li><li>Compartiremos nuestras primeras ideas en una lluvia de ideas general.</li></ol>
+                <p><strong>¿Por qué es importante?</strong> Para darnos cuenta del poder que tenemos en nuestras manos con la tecnología y para empezar a pensar como innovadores sociales. ¡Vamos a abrir nuestra mente a las posibilidades!</p>
+				
+                <center><img src="./FASEACTF1.1.png" width="100%"  ></center>
+                                
+                <p class="activity-title">Actividad 1.2: Exploradores Urbanos (o Escolares)</p>
+                <p><strong>¿Qué vamos a hacer?</strong></p>
+                <ol><li>Realizaremos un "recorrido de observación" por nuestra institución educativa o un área cercana de nuestra comunidad (si es seguro y está permitido).</li><li>Llevaremos una libreta o dispositivo para anotar observaciones: ¿Qué funciona bien? ¿Qué podría mejorar? ¿Qué necesidades o problemas vemos? Podemos tomar fotos o videos cortos (con permiso).</li><li>Nos enfocaremos en buscar situaciones donde una solución tecnológica podría marcar una diferencia.</li></ol>
+                <p><strong>¿Por qué es importante?</strong> Para convertirnos en observadores críticos de nuestro entorno y empezar a identificar de primera mano los desafíos que podríamos abordar. ¡Seremos como antropólogos tecnológicos!</p>
+                <center><img src="./FASEACTF1.2.png" width="100%"  ></center>
+                            </div>
+
+            <!-- ... (Resto de Fases y Actividades completas como en Entregable 2 y 3) ... -->
+            <div class="fase-proyecto">
+                <h3>Fase 2: Detectives Comunitarios - ¡Encontrando Nuestro Desafío!</h3>
+                               <p class="activity-title">Actividad 2.1: Formando Equipos de Tecno-Innovadores</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Con base en intereses comunes o habilidades complementarias (que podemos identificar con una breve encuesta o dinámica), formaremos equipos de trabajo de 3-4 estudiantes.</li><li>Cada equipo definirá roles básicos iniciales (ej. coordinador, investigador, documentador) que podrán rotar.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Porque los grandes proyectos se hacen en equipo. Aprenderemos a colaborar, comunicarnos y aprovechar los talentos de cada uno.</p>
+                <center><img src="./FASEACTF2.1.png" width="100%"  ></center>
+               
+                <p class="activity-title">Actividad 2.2: Del Problema General al Desafío Específico (Indagación Inicial)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>En equipo, revisaremos las observaciones de la Fase 1 y seleccionaremos 2-3 problemas potenciales que nos parezcan interesantes y abordables.</li><li>Para cada problema potencial, comenzaremos a aplicar los primeros pasos de la <strong>Indagación</strong>:<ul><li><strong>Observar detalladamente:</strong> Describir el problema con el mayor detalle posible. ¿Quiénes son los afectados? ¿Cuándo y dónde ocurre? ¿Cuáles son sus consecuencias?</li><li><strong>Formular preguntas:</strong> Generar al menos 5 preguntas investigables sobre cada problema. Ejemplo: "¿Cuál es la principal causa de este problema?", "¿Qué soluciones existen actualmente y por qué no son suficientes?", "¿Qué datos necesitamos para entender mejor su magnitud?".</li><li><strong>Consultar fuentes de información (inicial):</strong> Realizar una búsqueda rápida en internet o preguntar a personas clave (profesores, personal del colegio, miembros de la comunidad) para tener una idea preliminar de la viabilidad de abordar el problema.</li></ul></li><li>Cada equipo elegirá UN desafío específico en el que se enfocará para el resto del proyecto.</li><li>Redactaremos una "Declaración del Problema": una descripción clara y concisa del desafío comunitario que nuestro equipo ha decidido abordar.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para asegurarnos de que entendemos bien el problema antes de saltar a las soluciones. Este es el corazón de la <strong>Indagación</strong>: ¡preguntar, explorar y comprender a fondo!</p>
+                <center><img src="./FASEACTF2.2.png" width="100%"  ></center>
+                           </div>
+            
+            <div class="fase-proyecto">
+                <h3>Fase 3: Mentes en Acción - ¡Ideando la Tecno-Solución!</h3>
+                                <p class="activity-title">Actividad 3.1: Investigación Profunda y Lluvia de Ideas Tecnológicas (Indagación y Creatividad)</p>
+                 <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Continuaremos nuestro proceso de <strong>Indagación</strong>, ahora enfocado en la solución:<ul><li><strong>Consultar fuentes de información (avanzada):</strong> Investigar a fondo sobre el problema elegido y las tecnologías existentes que podrían ser parte de una solución (apps, sensores, plataformas web, IA básica, robótica, etc.). Buscaremos casos de éxito similares.</li><li><strong>Identificar variables:</strong> ¿Qué factores tecnológicos, sociales o económicos influirán en el éxito de nuestra solución?</li><li><strong>Hacer predicciones (sobre soluciones):</strong> ¿Qué tipo de solución tecnológica creemos que sería más efectiva y por qué?</li></ul></li><li>Realizaremos una sesión de lluvia de ideas ("brainstorming") en equipo para generar múltiples ideas de soluciones tecnológicas para nuestro desafío. ¡Ninguna idea es mala en esta etapa!</li><li>Filtraremos y seleccionaremos la idea de solución tecnológica más prometedora, considerando su viabilidad, impacto potencial y los recursos disponibles.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para no reinventar la rueda y para que nuestra solución sea informada, creativa y realista. ¡La <strong>Indagación</strong> nos ayuda a tomar decisiones inteligentes!</p>
+                 <center><img src="./FASEACTF3.1.png" width="100%"  ></center>
+                 <p class="activity-title">Actividad 3.2: Diseño Conceptual y Planificación del Prototipo (Ingeniería y Matemáticas)</p>
+                  <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Crearemos un diseño conceptual detallado de nuestra solución tecnológica. Esto puede incluir:<ul><li>Bocetos y diagramas de la interfaz de usuario (si es software o app).</li><li>Diagramas de flujo de cómo funcionará el sistema.</li><li>Listado de características principales y secundarias.</li><li>Tecnologías específicas que planeamos usar (lenguajes de programación, plataformas, hardware).</li></ul></li><li>Comenzaremos a aplicar la <strong>Argumentación Matemática</strong>:<ul><li>Si nuestra solución implica datos: ¿Cómo vamos a recolectar, almacenar y analizar esos datos? ¿Qué modelos matemáticos simples podrían ayudarnos (ej. promedios, tendencias)?</li><li>Si implica un diseño físico: ¿Qué dimensiones, materiales o mecanismos usaremos y por qué? ¿Podemos hacer cálculos básicos para justificar estas elecciones?</li><li>Definiremos métricas básicas de éxito: ¿Cómo sabremos si nuestro prototipo funciona y cumple su objetivo?</li></ul></li><li>Elaboraremos un plan de trabajo sencillo: tareas principales, responsables (dentro del equipo) y tiempos estimados.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para tener un plan claro antes de empezar a construir. El diseño y la planificación nos ahorran tiempo y esfuerzo. Aquí, la <strong>Argumentación Matemática</strong> nos ayuda a justificar por qué nuestro diseño tiene sentido.</p>
+                 <center><img src="./FASEACTF3.2.png" width="100%"  ></center>
+            </div>
+
+             <div class="fase-proyecto">
+                <h3>Fase 4: Manos a la Obra - ¡Construyendo Nuestro Prototipo!</h3>
+                             <p class="activity-title">Actividad 4.1: Desarrollo Ágil del Prototipo (Tecnología y Arte)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>¡Es hora de construir! Utilizando las herramientas y tecnologías seleccionadas (ej. App Inventor, Python, Arduino, HTML/CSS, TinkerCAD, Figma, materiales reciclados, etc.), comenzaremos a desarrollar la primera versión funcional de nuestro prototipo (Producto Mínimo Viable - MVP).</li><li>Trabajaremos en ciclos cortos: construir una parte, probarla rápidamente, y seguir.</li><li>Prestaremos atención al diseño visual y la usabilidad (Arte): ¿Es fácil de entender y usar? ¿Es agradable a la vista?</li><li>Documentaremos nuestro proceso: qué estamos haciendo, qué problemas encontramos y cómo los solucionamos.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para materializar nuestras ideas y aprender haciendo. Enfrentaremos desafíos técnicos y aprenderemos a resolverlos. ¡Aquí es donde la magia de la creación sucede!</p>
+                <center><img src="./FASEACTF4.1.png" width="100%"  ></center>
+                <p class="activity-title">Actividad 4.2: Consultas y Retroalimentación Temprana</p>
+                 <p><strong>¿Qué vamos a hacer?</strong> <ol><li>A medida que avanzamos, presentaremos nuestros avances al docente y quizás a otros equipos para obtener retroalimentación temprana.</li><li>No esperaremos a tener todo "perfecto" para mostrarlo.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para corregir errores a tiempo y asegurarnos de que vamos por buen camino. La retroalimentación es un regalo.</p>
+                <center><img src="./FASEACTF4.2.png" width="100%"  ></center>
+            </div>
+
+            <div class="fase-proyecto">
+                <h3>Fase 5: A Prueba de Fuego - ¡Mejorando y Justificando!</h3>
+                              <p class="activity-title">Actividad 5.1: Pruebas de Usuario y Recolección de Datos (Indagación)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Una vez que tengamos un prototipo funcional (MVP), lo pondremos a prueba con usuarios reales (compañeros de otros cursos, profesores, miembros de la comunidad si es posible y seguro).</li><li>Aplicaremos la <strong>Indagación</strong>:<ul><li><strong>Plantear experimentos (pruebas de usabilidad):</strong> Diseñaremos tareas sencillas para que los usuarios intenten realizar con nuestro prototipo.</li><li><strong>Observar y Realizar mediciones:</strong> Tomaremos notas de cómo interactúan, qué dificultades encuentran, cuánto tiempo les toma, qué comentarios hacen. Podemos usar encuestas cortas o entrevistas.</li><li><strong>Identificar variables:</strong> ¿Qué aspectos de nuestro diseño parecen funcionar bien y cuáles no?</li><li><strong>Organizar y analizar resultados:</strong> Sistematizaremos los datos মসজিদের de las pruebas.</li></ul></li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para obtener evidencia real de cómo funciona nuestra solución y dónde necesita mejorar. ¡La <strong>Indagación</strong> nos ayuda a basar nuestras mejoras en datos, no solo en opiniones!</p>
+                <center><img src="./FASEACTF5.1.png" width="100%"  ></center>
+                <p class="activity-title">Actividad 5.2: Iteración y Refinamiento del Prototipo (Ingeniería)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Con base en los resultados de las pruebas, identificaremos los cambios y mejoras más importantes para nuestro prototipo.</li><li>Volveremos a la "mesa de diseño" y al "taller de construcción" para implementar estas mejoras.</li><li>Es posible que repitamos el ciclo de prueba-mejora varias veces si el tiempo lo permite.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Porque el primer intento rara vez es perfecto. La ingeniería se trata de mejorar continuamente.</p>
+                <center><img src="./FASEACTF5.2.png" width="100%"  ></center>
+                 <p class="activity-title">Actividad 5.3: Fortaleciendo Nuestros Argumentos (Argumentación Matemática)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Revisaremos y fortaleceremos la justificación de nuestro diseño y su efectividad, usando la <strong>Argumentación Matemática</strong>:<ul><li><strong>Plantearemos afirmaciones</strong> sobre por qué nuestra solución es válida y pertinente para el problema, basándonos en los datos de las pruebas y en los principios tecnológicos o científicos aplicados.</li><li><strong>Argumentaremos a favor</strong> de las decisiones de diseño que tomamos (ej. "Elegimos este algoritmo porque es más eficiente para el volumen de datos esperado, como se demuestra en...").</li><li>Si usamos modelos matemáticos, explicaremos cómo validan nuestra solución.</li><li>Prepararemos argumentos para responder a posibles preguntas o críticas sobre nuestra solución.</li></ul></li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> No basta con tener una buena idea; debemos ser capaces de explicar y defender por qué es buena, usando lógica y evidencia. ¡La <strong>Argumentación Matemática</strong> nos da las herramientas para ser persuasivos y rigurosos!</p>
+                <center><img src="./FASEACTF5.3.png" width="100%"  ></center>
+            </div>
+
+            <div class="fase-proyecto">
+                <h3>Fase 6: ¡Mostrando Nuestro Ingenio! - Compartiendo con la Comunidad</h3>
+                               <p class="activity-title">Actividad 6.1: Preparando la Presentación Impactante (Comunicación y Arte)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Cada equipo preparará una presentación final para mostrar su proyecto. Debe incluir:<ul><li>El problema comunitario abordado.</li><li>Su solución tecnológica (demostración del prototipo).</li><li>El proceso de diseño e indagación.</li><li>Los resultados de las pruebas y cómo argumentan su efectividad.</li><li>Los aprendizajes clave.</li></ul></li><li>Usaremos herramientas visuales (diapositivas, videos cortos, el prototipo mismo) para hacerla atractiva y comprensible.</li><li>Practicaremos la presentación para asegurar claridad y buen manejo del tiempo.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para compartir nuestro trabajo con otros, inspirarlos y demostrar lo que hemos aprendido y logrado. ¡Es nuestra oportunidad de brillar!</p>
+                <center><img src="FASEACTF6.1.png" width="100%"  ></center>
+                <p class="activity-title">Actividad 6.2: Feria de Tecno-Innovadores Comunitarios (o Presentación en Clase)</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Presentaremos nuestros proyectos a compañeros, profesores, y si es posible, a miembros de la comunidad o directivos.</li><li>Responderemos preguntas y recogeremos comentarios finales.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para celebrar nuestros logros, recibir reconocimiento y potencialmente, inspirar la implementación real de algunas soluciones. ¡Veremos el impacto de ser ciudadanos útiles!</p>
+                <center><img src="FASEACTF6.2.png" width="100%"  ></center>
+            </div>
+
+            <div class="fase-proyecto">
+                <h3>Fase 7: Mirando Hacia Atrás y Hacia Adelante - ¡Nuestro Viaje de Aprendizaje!</h3>
+                               <p class="activity-title">Actividad 7.1: Reflexión Individual y Grupal</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Individualmente, escribiremos una breve reflexión sobre nuestro aprendizaje: ¿Qué fue lo más desafiante? ¿Qué aprendí sobre tecnología, sobre mi comunidad y sobre mí mismo? ¿Cómo apliqué la indagación y la argumentación?</li><li>En equipo, discutiremos: ¿Qué funcionó bien en nuestro trabajo colaborativo? ¿Qué podríamos mejorar para futuros proyectos? ¿Cuál fue el mayor logro de nuestro equipo?</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para consolidar nuestro aprendizaje y ser conscientes de nuestro crecimiento. La reflexión nos ayuda a aprender de la experiencia.</p>
+                <center><img src="FASEACTF7.1.png" width="100%"  ></center>
+                <p class="activity-title">Actividad 7.2: Próximos Pasos y Celebración</p>
+                <p><strong>¿Qué vamos a hacer?</strong> <ol><li>Consideraremos si alguna de las soluciones tiene potencial para seguir desarrollándose o implementándose.</li><li>Celebraremos el esfuerzo y los logros de todos los equipos.</li></ol></p>
+                <p><strong>¿Por qué es importante?</strong> Para reconocer el valor del trabajo realizado y mantener vivo el espíritu innovador.</p>
+                <center><img src="FASEACTF7.2.png" width="100%"  ></center>
+            </div>
+
+        </div>
+
+        <div id="Evaluacion" class="tab-content">
+            <!-- Contenido de Evaluación y Recursos (igual que antes) -->
+            <h2>Recursos y Materiales</h2>
+                        <ul class="resource-list">
+                <li><span class="icon-placeholder"></span><strong>Espacios:</strong> Aulas con mesas para trabajo en equipo, laboratorio de informática, taller (si se requiere hardware y está disponible), espacio para presentaciones.</li>
+                <li><span class="icon-placeholder"></span><strong>Equipamiento:</strong> Computadores con acceso a internet. Software: Navegadores web, suites de ofimática, software de programación (IDE's para Python, Java, etc.), plataformas de desarrollo de apps (ej. MIT App Inventor, Thunkable), software de diseño gráfico/UI/UX (ej. Figma, Canva, GIMP), software CAD (ej. TinkerCAD, FreeCAD). Hardware (según proyecto): Microcontroladores (Arduino, Micro:bit, Raspberry Pi), sensores, actuadores, componentes electrónicos básicos, herramientas de taller (cautín, multímetro, protoboard), impresora 3D (si está disponible). Materiales de prototipado: Cartón, plástico reciclado, madera balsa, pegamento, cintas, cables, etc.</li>
+                <li><span class="icon-placeholder"></span><strong>Humanos:</strong> Docente facilitador, posibles mentores de la comunidad o expertos en tecnología.</li>
+                <li><span class="icon-placeholder"></span><strong>Digitales:</strong> Acceso a tutoriales en línea, documentación de software/hardware, plataformas colaborativas (Google Workspace, Microsoft Teams).</li>
+                <li><span class="icon-placeholder"></span><strong>Impresos:</strong> Guías de trabajo, rúbricas, EBC, material de consulta.</li>
+            </ul>
+
+            <h2>Estrategias de Evaluación</h2>
+                     <h3>Evaluación Formativa</h3>
+            <ul class="evaluation-list">
+                <li><span class="icon-placeholder"></span>Observación directa del trabajo en equipo y participación individual.</li>
+                <li><span class="icon-placeholder"></span>Revisión periódica de avances (bocetos, planes, código, prototipos iniciales).</li>
+                <li><span class="icon-placeholder"></span>Retroalimentación constante del docente y entre pares.</li>
+                <li><span class="icon-placeholder"></span>Preguntas orientadoras para fomentar la indagación y la argumentación.</li>
+                <li><span class="icon-placeholder"></span>Listas de cotejo para habilidades específicas (ej. formulación de preguntas de indagación, presentación de argumentos matemáticos).</li>
+                <li><span class="icon-placeholder"></span>Diarios de campo o bitácoras de equipo donde registren su proceso, decisiones y aprendizajes.</li>
+            </ul>
+            <h3>Evaluación Sumativa</h3>
+            <ul class="evaluation-list">
+                <li><span class="icon-placeholder"></span>Producto Final (Prototipo Tecnológico): Evaluado mediante la rúbrica detallada.</li>
+                <li><span class="icon-placeholder"></span>Informe del Proyecto / Documentación Técnica: Claridad, organización, justificación de decisiones, inclusión de diagramas, código (si aplica), y análisis de resultados de pruebas.</li>
+                <li><span class="icon-placeholder"></span>Presentación Oral y Demostración: Claridad, coherencia, capacidad de comunicar el proceso y los resultados, efectividad de la demostración, respuestas a preguntas.</li>
+                <li><span class="icon-placeholder"></span>Portafolio del Equipo: Recopilación de evidencias del proceso de indagación, diseño, argumentación y colaboración.</li>
+                <li><span class="icon-placeholder"></span>Autoevaluación y Coevaluación: Reflexión sobre el propio aprendizaje y la contribución de los compañeros.</li>
+            </ul>
+
+            <h2>Producto(s) Final(es) del Proyecto</h2>
+                     <ol class="product-list">
+                <li><span class="icon-placeholder" style="width:30px; height:30px;"></span><strong>Prototipo funcional de la solución tecnológica</strong> (software, app, dispositivo físico, sistema web, etc.) que aborda el desafío comunitario identificado.</li>
+                <li><span class="icon-placeholder" style="width:30px; height:30px;"></span><strong>Documentación del Proyecto:</strong> Un informe digital o físico que incluya: Descripción del problema comunitario y justificación de su elección. Proceso de indagación (preguntas, investigación, análisis de datos). Diseño conceptual y técnico de la solución (diagramas, bocetos, especificaciones). Proceso de desarrollo y las tecnologías utilizadas. Resultados de las pruebas de usuario y cómo se usaron para iterar. Argumentación de la validez y pertinencia de la solución (incluyendo justificaciones matemáticas si aplica). Manual de usuario básico (si aplica).</li>
+                <li><span class="icon-placeholder" style="width:30px; height:30px;"></span><strong>Presentación multimedia</strong> (diapositivas, video) y <strong>demostración en vivo</strong> del prototipo.</li>
+            </ol>
+
+            <h3>Vinculación con el Contexto</h3>
+                       <p><strong>Local:</strong> El proyecto se centra en resolver un problema REAL de la comunidad inmediata de los estudiantes (escuela, barrio). Se buscará, en la medida de lo posible, involucrar a miembros de la comunidad como informantes, usuarios de prueba o audiencia de las soluciones.</p>
+            <p><strong>Global:</strong> Se conectarán los desafíos locales con los Objetivos de Desarrollo Sostenible (ODS) de la ONU, mostrando cómo las soluciones locales pueden contribuir a metas globales (ej. ODS 3: Salud y Bienestar, ODS 4: Educación de Calidad, ODS 11: Ciudades y Comunidades Sostenibles, ODS 12: Producción y Consumo Responsables). Se analizarán ejemplos de innovación social tecnológica de otras partes del mundo.</p>
+
+            <h3>Duración Estimada</h3>
+                        <p>Entre 8 y 12 semanas, asumiendo una dedicación de 3-4 horas de clase semanales, más trabajo autónomo de los estudiantes. La duración puede ajustarse según la profundidad y complejidad de los proyectos.</p>
+
+            <h3>Consideraciones para la Inclusión y Equidad</h3>
+                       <ul>
+                <li>Flexibilidad en la elección del problema: Permitir que los equipos elijan problemas que resuenen con sus intereses y capacidades diversas.</li>
+                <li>Roles flexibles dentro del equipo: Fomentar que los estudiantes asuman roles según sus fortalezas, pero también que tengan la oportunidad de explorar nuevas habilidades.</li>
+                <li>Diversidad de herramientas tecnológicas: Ofrecer opciones de software y hardware con diferentes niveles de complejidad y accesibilidad.</li>
+                <li>Adaptaciones para estudiantes con necesidades educativas especiales: Proveer apoyos visuales, instrucciones claras y segmentadas, tiempo adicional si es necesario, y acceso a tecnologías asistivas.</li>
+                <li>Evaluación diversificada: Utilizar múltiples instrumentos de evaluación que permitan a los estudiantes demostrar su aprendizaje de diferentes maneras.</li>
+                <li>Fomentar un ambiente de respeto y colaboración: Donde todas las voces sean escuchadas y valoradas.</li>
+                <li>Considerar el acceso a recursos fuera del aula: Ser consciente de las posibles brechas digitales y buscar alternativas o apoyos.</li>
+            </ul>
+        </div>
+        
+        <div id="Rubrica" class="tab-content">
+            <h2>Rúbrica Detallada de Evaluación del Proyecto: "Tecno-Innovadores Comunitarios"</h2>
+                       <div class="rubrica">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criterio de Evaluación</th>
+                            <th>Nivel Bajo (1.0 - 2.9)</th>
+                            <th>Nivel Básico (3.0 - 3.9)</th>
+                            <th>Nivel Alto (4.0 - 4.5)</th>
+                            <th>Nivel Superior (4.6 - 5.0)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Indagación Científica y Comprensión del Problema</td>
+                            <td class="nivel-bajo">El problema comunitario está vagamente definido o no es relevante. La investigación es superficial, con pocas preguntas o fuentes. No hay un análisis claro de la información.</td>
+                            <td class="nivel-basico">El problema está definido, pero la investigación podría ser más profunda. Se formulan algunas preguntas y se consultan fuentes básicas. El análisis de la información es simple.</td>
+                            <td class="nivel-alto">El problema está claramente definido y es relevante. Se aplica un proceso de indagación con preguntas pertinentes, consulta de diversas fuentes y un análisis adecuado de la información.</td>
+                            <td class="nivel-superior">El problema está excelentemente definido, demostrando profunda comprensión de su contexto y relevancia. La indagación es rigurosa, sistemática, con preguntas incisivas, múltiples fuentes de calidad y un análisis crítico y detallado de la información.</td>
+                        </tr>
+                        <tr>
+                            <td>2. Diseño y Desarrollo de la Solución Tecnológica (T, I, A)</td>
+                            <td class="nivel-bajo">El prototipo es apenas funcional o no responde al problema. El diseño es poco claro o inapropiado. Uso limitado o incorrecto de herramientas tecnológicas. Poca o nula consideración estética o de usabilidad.</td>
+                            <td class="nivel-basico">El prototipo es parcialmente funcional y aborda algunos aspectos del problema. El diseño es básico pero comprensible. Uso adecuado de algunas herramientas tecnológicas. Consideraciones estéticas y de usabilidad elementales.</td>
+                            <td class="nivel-alto">El prototipo es funcional y responde de manera efectiva al problema. El diseño es claro, apropiado e innovador. Uso eficiente de herramientas tecnológicas. Buenas consideraciones estéticas y de usabilidad.</td>
+                            <td class="nivel-superior">El prototipo es altamente funcional, innovador y responde de manera sobresaliente y creativa al problema. El diseño es excelente, robusto y elegante. Uso experto y creativo de herramientas tecnológicas. Estética y usabilidad excepcionales.</td>
+                        </tr>
+                        <tr>
+                            <td>3. Argumentación Matemática y Justificación de Decisiones (M)</td>
+                            <td class="nivel-bajo">Las decisiones de diseño carecen de justificación o los argumentos son débiles e incorrectos. No se utilizan modelos o datos matemáticos, o se usan erróneamente.</td>
+                            <td class="nivel-basico">Se intentan justificar algunas decisiones de diseño, pero la argumentación es básica o con algunas imprecisiones. Uso limitado o simple de datos o modelos matemáticos para soportar afirmaciones.</td>
+                            <td class="nivel-alto">Las decisiones de diseño están bien justificadas con argumentos lógicos y coherentes. Se utilizan datos y/o modelos matemáticos apropiados para validar aspectos de la solución. Se plantean afirmaciones claras.</td>
+                            <td class="nivel-superior">Las decisiones de diseño están excelentemente justificadas con argumentos matemáticos rigurosos, precisos y persuasivos. Uso sofisticado y pertinente de datos, modelos matemáticos o principios lógicos para validar la solución. Se establecen conexiones claras entre la matemática y el problema.</td>
+                        </tr>
+                         <tr>
+                            <td>4. Colaboración y Trabajo en Equipo</td>
+                            <td class="nivel-bajo">Poca participación y colaboración en el equipo. Conflictos frecuentes non resueltos. Desigualdad en la distribución de tareas. No se cumplen los roles asignados.</td>
+                            <td class="nivel-basico">Colaboración intermitente. Algunos desafíos en la comunicación o distribución de tareas, pero el equipo logra avanzar. Roles se cumplen parcialmente.</td>
+                            <td class="nivel-alto">Buena colaboración y comunicación dentro del equipo. Las tareas se distribuyen de manera equitativa y los roles se cumplen. Se apoyan mutuamente.</td>
+                            <td class="nivel-superior">Excelente colaboración, comunicación fluida y proactiva. Sinergia en el equipo. Las tareas se gestionan eficientemente y los roles se asumen con responsabilidad y flexibilidad. Se evidencia un fuerte apoyo mutuo.</td>
+                        </tr>
+                        <tr>
+                            <td>5. Comunicación y Presentación del Proyecto (Lenguaje, Arte)</td>
+                            <td class="nivel-bajo">La presentación es desorganizada, poco clara y no atractiva. Dificultad para explicar el proyecto o responder preguntas. El prototipo no se demuestra o la demostración falla significativamente.</td>
+                            <td class="nivel-basico">La presentación es comprensible pero podría ser más organizada o atractiva. Se explican los aspectos básicos del proyecto con alguna dificultad. La demostración del prototipo es funcional pero con algunos problemas.</td>
+                            <td class="nivel-alto">La presentación es clara, organizada y atractiva. Se explica bien el proyecto y se responden adecuadamente las preguntas. El prototipo se demuestra de manera efectiva. Buen uso de apoyos visuales.</td>
+                            <td class="nivel-superior">La presentación es excepcional: cautivadora, muy clara, organizada y profesional. Se comunica el proyecto con pasión y dominio. Respuestas a preguntas son perspicaces. Demostración impecable del prototipo. Uso excelente y creativo de apoyos visuales.</td>
+                        </tr>
+                         <tr>
+                            <td>6. Innovación y Creatividad</td>
+                            <td class="nivel-bajo">La solución es una copia directa de algo existente o muy convencional, sin adaptaciones significativas al contexto.</td>
+                            <td class="nivel-basico">La solución presenta alguna adaptación o mejora menor sobre ideas existentes, con limitada originalidad para el contexto.</td>
+                            <td class="nivel-alto">La solución muestra un buen nivel de originalidad y creatividad en la adaptación o combinación de ideas, o en su aplicación al contexto específico.</td>
+                            <td class="nivel-superior">La solución es altamente original, ingeniosa y creativa, aportando una perspectiva nueva o una mejora significativa para abordar el desafío comunitario.</td>
+                        </tr>
+                         <tr>
+                            <td>7. Impacto Potencial y Pertinencia Comunitaria</td>
+                            <td class="nivel-bajo">La solución propuesta tiene poco o ningún impacto visible en el problema comunitario, o no es pertinente para el contexto.</td>
+                            <td class="nivel-basico">La solución propuesta podría tener un impacto limitado en el problema comunitario, o su pertinencia es discutible.</td>
+                            <td class="nivel-alto">La solución propuesta tiene un claro potencial de impacto positivo en el problema comunitario y es pertinente para el contexto.</td>
+                            <td class="nivel-superior">La solución propuesta demuestra un alto potencial de impacto transformador y es excepcionalmente pertinente y adaptada a las necesidades del contexto comunitario.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        // Activar la primera pestaña por defecto
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelector('.tab-button').click();
+        });
+    </script>
+</body>
+</html>
